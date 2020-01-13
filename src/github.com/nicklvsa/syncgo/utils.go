@@ -1,5 +1,4 @@
 package syncgo
-
 import (
 	"bytes"
 	"errors"
@@ -29,9 +28,6 @@ func upload(dir string, server *Sync) ([]byte, error) {
 
 	if isDir {
 		//upload directory
-
-		//var uploadWaiter sync.WaitGroup
-
 		var files []string
 		content := &bytes.Buffer{}
 		writer := multipart.NewWriter(content)
@@ -119,6 +115,7 @@ func upload(dir string, server *Sync) ([]byte, error) {
 
 			}
 
+			//wait for the response channels to respond and return their results
 			for {
 				select {
 				case resp := <-respChannel:
@@ -196,3 +193,4 @@ func isDirectory(path string) (bool, error) {
 	}
 	return info.IsDir(), nil
 }
+

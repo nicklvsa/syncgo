@@ -1,5 +1,4 @@
 package syncgo
-
 import (
 	"errors"
 	"path/filepath"
@@ -40,3 +39,4 @@ func (s *Sync) SyncFiles(files []string) ([]byte, error) {
 	}
 	return nil, errors.New("errors while trying to sync nonexistent files")
 }
+
